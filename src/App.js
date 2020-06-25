@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+//app.js
+import React, { Component } from 'react';
 import './App.css';
+import {BrowserRouter as Router,Route} from 'react-router-dom';
+import Login from './component/login';//用户登录组件
+import List from './component/list';//用户登录记录
+import register from './component/register';//用户注册组件
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state={};
+  }
+  render() {
+    return (
+        <Router>
+            <div className="container">
+                <Route exact path="/" component={Login} />
+                {/*<Route path="/products/:id" component={Detail} />*/}
+                <Route path="/login" component={Login} />
+                <Route exact path="/list" component={List} />
+                <Route exact path="/register" component={register} />
+            </div>
+        </Router>
+    );
+  }
 }
 
 export default App;
+
